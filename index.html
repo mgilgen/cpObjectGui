@@ -1,53 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Javascript Bootstrap Styles demo</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    ></script>
-    <script src="script.js"></script>
 
-    <!-- Master Div-->
-    <div class="container overflow-hidden text-center text-light">
-        <div class="row text-dark">
-            <div class="col gy-3">Logged in as: {}</div>
-            <div class="col gy-3">
-                <button type="button" class="btn btn-success">Login</button>
-            </div>
-            
-        </div>
-      <div class="row">
-        <!-- Nav Div-->
-        <div class="col-sm-4">
-          <div id="getHosts" class="p-3 m-5 bg-primary" onmouseover="changeColorIn(this)" onmouseout="changeColorOut(this)" onclick="">Get Hosts</div>
-          <div id="getNet" class="p-3 m-5 bg-primary" onmouseover="changeColorIn(this)" onmouseout="changeColorOut(this)" onclick="">Get Networks</div>
-          <div id="getNetGrps" class="p-3 m-5 bg-primary" onmouseover="changeColorIn(this)" onmouseout="changeColorOut(this)" onclick="">Get Network Groups</div>
-          <div id="getSvcs" class="p-3 m-5 bg-primary" onmouseover="changeColorIn(this)" onmouseout="changeColorOut(this)" onclick="">Get Services</div>
-          <div id="getSvcGrps" class="p-3 m-5 bg-primary" onmouseover="changeColorIn(this)" onmouseout="changeColorOut(this)" onclick="">Get Service Groups</div>
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkpoint Object Exporter</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+</head>
 
-        <!-- Nav Div-->
-        <div class="col-sm-8 gy-5">
-          <div class="p-3 bg-secondary-subtle">
-            <div class="text-dark">
-                Whatever output then comes in here....
-            </div>
-          </div>
-        </div>
-        
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+
+  <!-- Master Div-->
+  <div class="container overflow-hidden text-center text-light">
+
+    <!-- Banner Div-->
+    <div id="divBannerRow" class="row text-dark">
+      <div class="col gy-3">Logged in as: {}</div>
+      <div class="col gy-3">
+        <form action="https://10.20.1.11:443/web_api/login" method="post">
+          <button type="button" class="btn btn-success">Login</button>
+        </form>
       </div>
     </div>
-  </body>
+
+    <div id="divMainRow" class="row">
+      <!-- Nav Div-->
+      <div class="col-sm-4">
+        <div id="getHosts" class="p-3 m-5 bg-primary" onmouseover="changeColorIn(this)"
+          onmouseout="changeColorOut(this)" onclick="getHosts()">Get Hosts</div>
+        <div id="getNet" class="p-3 m-5 bg-primary" onmouseover="changeColorIn(this)" onmouseout="changeColorOut(this)"
+          onclick="">Get Networks</div>
+        <div id="getNetGrps" class="p-3 m-5 bg-primary" onmouseover="changeColorIn(this)"
+          onmouseout="changeColorOut(this)" onclick="">Get Network Groups</div>
+        <div id="getSvcs" class="p-3 m-5 bg-primary" onmouseover="changeColorIn(this)" onmouseout="changeColorOut(this)"
+          onclick="">Get Services</div>
+        <div id="getSvcGrps" class="p-3 m-5 bg-primary" onmouseover="changeColorIn(this)"
+          onmouseout="changeColorOut(this)" onclick="">Get Service Groups</div>
+        <div id="resetOutput" class="p-3 m-5 bg-danger" onmouseover="changeDangerColorIn(this)"
+          onmouseout="changeDangerColorOut(this)" onclick="">Reset</div>
+      </div>
+
+      <!-- Output Div-->
+      <div class="col-sm-8 gy-5">
+        <div class="p-3 bg-secondary-subtle">
+          <div id="outputbox" class="text-dark">
+            Whatever output then comes in here....
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+
 </html>
