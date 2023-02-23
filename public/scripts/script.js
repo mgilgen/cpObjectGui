@@ -14,6 +14,10 @@ function changeDangerColorOut(object){
 }
 
 // actual jobs
+function toLoginPage(){
+    window.location.href = "/login.html"
+}
+
 
 // Login
 async function sendLogin(){
@@ -32,14 +36,14 @@ async function sendLogin(){
 
     const requestData = {
         method: "POST",
-        mode: "cors",
+        mode: "no-cors",
         headers: loginHeaders,
         body: JSON.stringify(data)
     }
 
     //let request = new Request("https://10.20.1.11:443/web_api/login", requestData)
 
-    let loginData = await fetch("https://10.20.1.11:443/web_api/login", requestData)
+    let loginData = await fetch("https://localhost:3000/login", requestData)
     .then((res) => res.json)
     .then((data) => console.log(data))
     .catch((error) => console.log(error))

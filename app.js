@@ -6,9 +6,15 @@ const app = express();
 const port = 3000;
 
 app.get("/login", function (req, res) {
-  res.send("Hello World");
+  res.redirect("/login.html");
+  //res.send("Hello World");
 });
+
+app.post("/login", function (req, res) {
+  console.log(req.body);
+  res.send(req.body);
+  res.end();
+})
 
 app.use(express.static("public"));
 app.listen(port);
-
