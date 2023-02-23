@@ -1,24 +1,14 @@
-const http = require('http');
-const fs = require('fs').promises;
+const fs = require("fs").promises;
+const fetch = require("node-fetch");
 
-const hostname = '127.0.0.1';
+const express = require("express");
+const app = express();
 const port = 3000;
 
-const server = http.createServer((req, res) => {
-  fs.readFile(__dirname + "/index.html").then(contents => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    res.end(contents);
-  })
-  .catch((err) => {
-    res.statusCode = 500;
-    res.end(err);
-    return;
-  });
-  
+app.get("/login", function (req, res) {
+  res.send("Hello World");
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+app.use(express.static("public"));
+app.listen(port);
 

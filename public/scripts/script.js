@@ -32,7 +32,7 @@ async function sendLogin(){
 
     const requestData = {
         method: "POST",
-        mode: "same-origin",
+        mode: "cors",
         headers: loginHeaders,
         body: JSON.stringify(data)
     }
