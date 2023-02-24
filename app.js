@@ -10,6 +10,7 @@ const port = 3000;
 
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }))
+app.use(express.static(__dirname + '/public', { maxAge: '1d' }));
 app.use(cors({ 
   methods: ['GET', 'POST'],
   origin: '*'
@@ -23,9 +24,6 @@ app.get("/login", function (req, res) {
 app.post("/login", async function (req, res) {
   console.log("Request-Body: " + JSON.stringify(req.body));
 
-  const logHeaders = new Headers({
-    'Content-Type': 'application/json'
-});
 
 const requestData = {
     method: "POST",

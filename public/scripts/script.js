@@ -26,7 +26,8 @@ async function sendLogin(){
     let passwd = new String(document.forms["loginForm"]["pwInput"].value);
 
     let loginHeaders = new Headers({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache'
     });
 
     const data = {
@@ -43,7 +44,7 @@ async function sendLogin(){
 
     //let request = new Request("https://10.20.1.11:443/web_api/login", requestData)
 
-    let loginData = await fetch("/login", requestData)
+    let loginData = fetch("/login", requestData)
                             .then((res) => res.json())
                             .catch((error) => { 
                                 console.log('Error: ', error);
