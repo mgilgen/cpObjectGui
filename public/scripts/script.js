@@ -22,32 +22,36 @@ function toLoginPage(){
 // Login
 async function sendLogin(){
 
-    let username = new String(document.forms["loginForm"]["uidInput"].value)
-    let passwd = new String(document.forms["loginForm"]["pwInput"].value)
+    let username = new String(document.forms["loginForm"]["uidInput"].value);
+    let passwd = new String(document.forms["loginForm"]["pwInput"].value);
 
     let loginHeaders = new Headers({
         'Content-Type': 'application/json'
     });
 
     const data = {
-        user:"admin",
-        password:"PAS1dUrotH"
+        user: username,
+        password: passwd
     }
 
     const requestData = {
         method: "POST",
-        mode: "no-cors",
+        mode: "cors",
         headers: loginHeaders,
         body: JSON.stringify(data)
     }
 
     //let request = new Request("https://10.20.1.11:443/web_api/login", requestData)
 
-    let loginData = await fetch("https://localhost:3000/login", requestData)
-    .then((res) => res.json)
-    .then((data) => console.log(data))
-    .catch((error) => console.log(error))
+    let loginData = await fetch("/login", requestData)
+                            .then((res) => res.json())
+                            .catch((error) => { 
+                                console.log('Error: ', error);
+                                console.log('Message: ', error.message);
+                                console.log('Line: ', error.lineNumber);
+                             });
     
+    console.log(loginData);
 }
 
 async function mdsLogin(){
